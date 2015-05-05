@@ -47,13 +47,6 @@ void setup() {
   for (int j=0; j < N; j++) {
     for (int i = 0; i < N; i++) {
   
-      // we calculate the y position of each quad 
-      float y =   SIN_X_AMPLITUDE*sin(i*SIN_X_FREQUENCY*PI/N) 
-                + SIN_Z_AMPLITUDE*sin(j*SIN_Z_FREQUENCY*PI/N)
-                + Y_OFFSET;
-  
-  
-  
       // color red for all vertices
       mesh.fill(255,0,0);
       
@@ -61,7 +54,13 @@ void setup() {
         mesh.fill(0,255,0);
       }
       
-          
+      // we calculate the y position of each quad 
+      float y =   SIN_X_AMPLITUDE*sin(i*SIN_X_FREQUENCY*PI/N) 
+                + SIN_Z_AMPLITUDE*sin(j*SIN_Z_FREQUENCY*PI/N)
+                + Y_OFFSET;
+  
+  
+      // create vertices with coordinates
       mesh.vertex(i*w, y, -j*w);
       mesh.vertex((i+1)*w, y, -j*w);
       mesh.vertex((i+1)*w, y, -(j+1)*w);

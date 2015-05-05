@@ -20,7 +20,7 @@ float Y_OFFSET = 200;
 * xi and zi are not the xz-world coordinates but the indices of row and column of the mesh.
 * (N/2, N/2) would be the quad in the middle.
 */
-void displaceQuad (PShape shape, int x, int z, float y) {
+void displaceQuadY (PShape shape, int x, int z, float y) {
   
   // find the start vertex of the quad on position xi, zi
   int index = x*4 + z*N*4;
@@ -32,9 +32,7 @@ void displaceQuad (PShape shape, int x, int z, float y) {
 }
 
 void displaceVertex (PShape shape, int index, float y) {
-    PVector v = shape.getVertex(index);
-    v.y = y;
-    shape.setVertex(index,v);  
+    // TODO: not implemented yet
 }
 
 
@@ -52,7 +50,7 @@ void setup() {
   
   
   // CALCULATED PARAMETERS
-  float w = MESH_WIDTH/N;
+  float w = MESH_WIDTH/N;q
   float h = MESH_WIDTH/N;
   
   // iterate over grid, create 4 vertices to draw a single quad
@@ -89,7 +87,7 @@ void draw() {
   translate (width/2 - MESH_WIDTH/2, height/2, 0);
   
   // move the middle quad in y-direction
-  displaceQuad (mesh, N/2, N/2, sin(frameCount*0.1)*150+200);
+  displaceQuadY (mesh, N/2, N/2, sin(frameCount*0.1)*150+200);
   
   shape(mesh);
 }

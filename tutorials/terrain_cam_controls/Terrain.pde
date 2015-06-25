@@ -1,9 +1,8 @@
 public class Terrain {
   
-  
   // the base mesh
   PShape mesh;
-  int N = 40;
+  int N = 100;
   
   // displacement shader
   PShader displaceShader;
@@ -52,12 +51,14 @@ public class Terrain {
   * we need to pass the control variables from our main draw
   */
   public void draw (float terrain_w, float terrain_h, PVector sunPos, PVector camPos) {
+    
     shader(displaceShader);
+    
     displaceShader.set("terrain_w", terrain_w);
     displaceShader.set("terrain_h", terrain_h);
     displaceShader.set("sunPos", sunPos);
     displaceShader.set("camPos", camPos);
-    
+    displaceShader.set("terrain_sin_f", terrain_sin_f);
     
     shape(mesh);
     resetShader();

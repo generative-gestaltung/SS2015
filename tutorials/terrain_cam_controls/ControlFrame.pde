@@ -92,6 +92,12 @@ public class ControlFrame extends PApplet {
       .setRange(0, 500.0)
       .setPosition(10,50)
       .moveTo("terrain");   
+      
+      cp5.addSlider("terrain_sin_f")
+      .plugTo(parent,"terrain_sin_f")
+      .setRange(0, 10.0)
+      .setPosition(10,70)
+      .moveTo("terrain");   
   }
 
   public void draw() {

@@ -8,7 +8,7 @@
 PShader shader;
 PShape mesh;
 
-int N = 200;
+int N = 50;
 
 void setup() {
   

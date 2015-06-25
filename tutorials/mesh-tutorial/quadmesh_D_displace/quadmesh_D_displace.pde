@@ -50,7 +50,7 @@ void setup() {
   
   
   // CALCULATED PARAMETERS
-  float w = MESH_WIDTH/N;q
+  float w = MESH_WIDTH/N;
   float h = MESH_WIDTH/N;
   
   // iterate over grid, create 4 vertices to draw a single quad

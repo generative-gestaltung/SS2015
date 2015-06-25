@@ -21,11 +21,11 @@ varying vec3 pos;
 
 uniform float terrain_w;
 uniform float terrain_h;
-
+uniform float terrain_sin_f;
 
 
 float calcHeight (float x, float z) {
-  float s = sin(x*4.0*PI) * sin(z*4.0*PI);
+  float s = sin(x*4.0*PI) * sin(z*4.0*PI*terrain_sin_f);
   return (s*0.5)+0.5;
 }
 

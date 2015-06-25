@@ -61,6 +61,7 @@ float sun_speed;
 // terrain related
 float terrain_w;
 float terrain_h;
+float terrain_sin_f;
 
 
 

@@ -1,9 +1,3 @@
-/*
-* Here we do the same as in quadmesh_C, but calculate the y position
- * inside the vertex shader.
- */
-
-
 // quad mesh
 PShape mesh;
 

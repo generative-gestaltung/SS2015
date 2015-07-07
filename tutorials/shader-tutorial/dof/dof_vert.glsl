@@ -13,15 +13,11 @@ attribute vec3 normal;
 
 
 // pass texcoord to fragment
-varying vec3 vertColor;
-varying vec3 vert;
-
+varying vec3 pos;
 
 
 void main() {
 
 	gl_Position = transform * (vertex);
-
-   	vertColor = vec3 (-vertex.z / 1000.0);
-   	vert = vertex.xzy;
+	pos = vertex.xyz;
 }

@@ -52,22 +52,21 @@ void setup() {
  
   // open file and iterate thru lines
   // create position keyframe from line data
-  try {
-    List<String> lines = Files.readAllLines(Paths.get("/Users/maxg/Documents/Processing/control_example_4_loadSave/keyframes.txt"), Charset.defaultCharset());
-    for (int i=0; i<NKEYFRAMES; i++) {
-      String[] values = lines.get(i).split(" ");  
-      PVector keyframe = new PVector(Float.parseFloat(values[0]), 
-                                     Float.parseFloat(values[1]),
-                                     Float.parseFloat(values[2]));
+  
+  
+  
+  // file has to be located in data subfolder
+  String lines[] = loadStrings("keyframes.txt");
+  for (int i=0; i<lines.length; i++) {
+    String[] values = lines[i].split(" ");  
+    PVector keyframe = new PVector (Float.parseFloat(values[0]), 
+                                    Float.parseFloat(values[1]),
+                                    Float.parseFloat(values[2]));
+    if (i<keyFrames.length) {
       keyFrames[i].set(keyframe);
-      println(keyframe);
     }
   }
-  
-  catch (Exception e) {
-    e.printStackTrace();
-  }
-  
+    
   cp5.addButton("reset")
      .setValue(0)
      .setPosition(0,30)

@@ -1,3 +1,5 @@
+//http://blenderartists.org/forum/showthread.php?237488-GLSL-depth-of-field-with-bokeh-v2-4-%28update%29
+
 uniform sampler2D bgl_RenderedTexture;
 uniform sampler2D bgl_DepthTexture;
 uniform float bgl_RenderedTextureWidth;

@@ -26,5 +26,5 @@ void main() {
   float b = dot(norm.xyz, dir);
 
 
-  gl_FragColor = vec4 (sunColor*b, 1.0);
+  gl_FragColor = vec4 (b, b, b,1.0);
 }

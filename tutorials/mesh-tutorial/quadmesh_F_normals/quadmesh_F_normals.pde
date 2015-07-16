@@ -36,7 +36,7 @@ float getHeight (float x, float z) {
 
 void setup() {
 
-  size(1200, 600, P3D);  
+  size(600, 600, P3D);  
 
   // load shader with fragment-program and vertex-program
   displaceShader = loadShader("displace_frag.glsl", "displace_vert.glsl");

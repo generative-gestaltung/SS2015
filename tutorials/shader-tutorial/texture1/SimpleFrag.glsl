@@ -34,5 +34,5 @@ void main() {
 		col = vec4 (c.z, c.z, c.z, 1); 
 	}
 	//gl_FragColor = vec4 (texture2D(tex0, tx).xyz, 1); 
-	gl_FragColor = col;
+	gl_FragColor = col*2.0;
 }

@@ -1,8 +1,8 @@
 PImage img;
 PShape mesh;
 
-int resX = 200;
-int resY = 200;
+int resX = 10;
+int resY = 10;
 
 int sizeX = 600;
 int sizeY = 400;

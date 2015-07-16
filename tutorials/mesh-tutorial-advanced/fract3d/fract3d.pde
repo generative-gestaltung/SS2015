@@ -1,17 +1,22 @@
+import controlP5.*;
+
 PShape can;
 float angle;
 PShader transformShader;
 float time = 0;
 float FRAMERATE = 50;
 
+Control control;
+
 
 void setup() {
-  size(800, 800, P3D);
+  size(600, 600, P3D);
   frameRate(FRAMERATE);
   
-  can = createCan(30, 2000, 32);
+  can = createCan(100, 2000, 32);
   transformShader = loadShader("transform_frag.glsl", "transform_vert.glsl");
   
+  control = new Control (new ControlP5(this));
 }
 
 
@@ -20,11 +25,16 @@ int N = 300;
   
 void draw() {   
  
-  
-  hint(ENABLE_DEPTH_SORT);
-  time += 1/FRAMERATE; 
+   
   background(0);
+  
+  
+  pushMatrix();
+  
+  time += 1/FRAMERATE;
   translate(width/2, height/2);
+  
+  
   
   int center_x = 0;
   int center_z = 0;
@@ -33,15 +43,19 @@ void draw() {
   
   camera (10000, -2000, -time*4000,
           0, 0, 0,
-          0,1,0);
+          0, 1, 0);
+          
+  perspective (45, float(width)/float(height), 
+               10, 10000.0);
           
           
-  perspective(PI/2, 1, 10, 40000);
-  
   shader(transformShader);
   transformShader.set("time", time);
-  transformShader.set("w",w);
+  transformShader.set("w", 500f);
+  transformShader.set("SIZE", 1500f);
   shape(can);  
+  
+  popMatrix();
 }
 
 PShape createCan(float r, float h, int detail) {
@@ -59,18 +73,18 @@ PShape createCan(float r, float h, int detail) {
         float z = cos(i * angle) * r;
         float u = float(i) / detail;
         
-        sh.normal (n*N+m,0,0);
+        sh.normal (n,m,i*4);
         sh.vertex (x + n*0, 0, z + m*0, u, 0);
         
-        sh.normal (n*N+m,0,0);
+        sh.normal (n,m,i*4+1);
         sh.vertex (x + n*0, h, z + m*0, u, 1);
      
         x = sin ((i+1) * angle) * r;
         z = cos ((i+1) * angle) * r;   
-        sh.normal (n*N+m,0,0);
+        sh.normal (n,m,i*4+2);
         sh.vertex (x + n*0, h, z + m*0, u, 0);
         
-        sh.normal (n*N+m,0,0);
+        sh.normal (n,m,i*4+3);
         sh.vertex (x + n*0, 0, z + m*0, u, 1);    
       }
     }

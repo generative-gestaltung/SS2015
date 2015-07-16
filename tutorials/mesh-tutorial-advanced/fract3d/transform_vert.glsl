@@ -18,6 +18,8 @@ float S = 7.0;
 
 uniform float time;
 uniform float w;
+uniform float SIZE;
+
 
 
 
@@ -67,20 +69,21 @@ void main() {
   
 
   vec4 pos = vertex;
-  float ind = normal.x;
 
+  float n = normal.x;
+  float m = normal.y;
 
 
   //pos = rotate(pos, vec3(0,0,1), a2);
 
-  float x = mod (ind,50.0);
-  float z = floor(ind/50.0);
+  float x = n * SIZE;
+  float z = m * SIZE;
 
 
-  pos = rotate(pos, vec3(1,0,0), ind*0.01+time*z*0.2);
-  pos = rotate(pos, vec3(0,0,1), ind*0.02+time*x*0.2);
+  pos = rotate(pos, vec3(1,0,0), time);
+  pos = rotate(pos, vec3(0,0,1), time*0.5);
 
-  pos = translate(pos, x*550.0, 0.0, -z*550.0);
+  pos = translate(pos, x, 0.0, -z);
 
   gl_Position = transform * pos;
   col = vec3(x,x,x);
